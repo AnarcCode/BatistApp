@@ -1,4 +1,4 @@
-package com.example.batistapp
+package com.phoenix.batistapp
 
 import io.flutter.embedding.android.FlutterActivity
 

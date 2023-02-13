@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "538175583927",
+    "project_id": "batistapp-9d9be",
+    "storage_bucket": "batistapp-9d9be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538175583927:android:0ea397e756115b36bcff32",
+        "android_client_info": {
+          "package_name": "com.phoenix.batistapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538175583927-aium1lvv68s821qb9te0e60aeid22njp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSphr2VLMIWtlEKrb070OmiUta-TipXjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538175583927-aium1lvv68s821qb9te0e60aeid22njp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "538175583927-7jevqhf9vcdsu45trgv2hmopn5um8qo6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.phoenix.batistapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

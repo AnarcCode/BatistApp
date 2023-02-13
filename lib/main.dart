@@ -1,7 +1,12 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -38,19 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  var db = FirebaseFirestore.instance;
-
   @override
   Widget build(BuildContext context) {
-    final user = <String, dynamic>{
-      "first": "Ada",
-      "last": "Lovelace",
-      "born": 1815
-    };
-
-// Add a new document with a generated ID
-    db.collection("users").add(user).then((DocumentReference doc) =>
-        print('DocumentSnapshot added with ID: ${doc.id}'));
 
     return Scaffold(
       appBar: AppBar(

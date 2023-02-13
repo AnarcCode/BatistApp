@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.batistapp">
+    package="com.phoenix.batistapp">
    <application
         android:label="batistapp"
         android:name="${applicationName}"
