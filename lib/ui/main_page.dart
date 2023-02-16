@@ -30,28 +30,34 @@ class MainPage extends GetView<MainController> {
           ),
           itemCount: controller.foodRequests.length,
           itemBuilder: (BuildContext context, int index) {
-            return Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-                side: const BorderSide(
-                  width: 4,
-                  color: Colors.purple,
-                ),
-              ),
-              child: Center(
-                child: Text(
-                  controller.foodRequests[index].name,
-                  style: const TextStyle(
-                    fontSize: 18,
+            return GestureDetector(
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  side: const BorderSide(
+                    width: 4,
+                    color: Colors.purple,
                   ),
                 ),
+                child: Center(
+                  child: Text(
+                    controller.foodRequests[index].name,
+                    style: const TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ),
+              onTap: () => Get.toNamed(
+                Routes.FOOD_REQUEST,
+                arguments: controller.foodRequests[index],
               ),
             );
           },
         );
       }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed(Routes.FOOD_REQUEST),
+        onPressed: () => Get.toNamed(Routes.ADD_FOOD_REQUEST),
         backgroundColor: Colors.purple,
         child: const Icon(Icons.add),
       ),
