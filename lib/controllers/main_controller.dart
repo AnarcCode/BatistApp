@@ -20,16 +20,14 @@ class MainController extends GetxController {
     foodRequests.clear();
 
     for (var element in query.docs) {
-      print(element.data());
       foodRequests.add(
         FoodRequestModel(
-          idCreator: '411',
+          idCreator: element.get('idCreator'),
           name: element.get('name'),
           foods: List<String>.from(element.get('foods')),
           juices: List<String>.from(element.get('juices')),
         ),
       );
-      print(foodRequests.toString());
     }
   }
 

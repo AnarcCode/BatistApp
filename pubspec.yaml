@@ -39,6 +39,7 @@ dependencies:
   cloud_firestore: ^4.3.2
   firebase_core: ^2.5.0
   get: ^4.6.5
+  device_info_plus: ^8.1.0
 
 dev_dependencies:
   flutter_test:
