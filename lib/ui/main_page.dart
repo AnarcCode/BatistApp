@@ -1,4 +1,5 @@
 import 'package:batistapp/controllers/main_controller.dart';
+import 'package:batistapp/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -53,7 +54,7 @@ class MainPage extends GetView<MainController> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => controller.addFoodRequest(),
+        onPressed: () => Get.toNamed(Routes.FOOD_REQUEST),
         backgroundColor: Colors.purple,
         child: const Icon(Icons.add),
       ),

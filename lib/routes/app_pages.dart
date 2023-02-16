@@ -1,5 +1,5 @@
 import 'package:batistapp/bindings/main_binding.dart';
-import 'package:batistapp/ui/food_request_page.dart';
+import 'package:batistapp/ui/add_food_request_page.dart';
 import 'package:batistapp/ui/main_page.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +14,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.FOOD_REQUEST,
-      page: () => const FoodRequestPage(),
+      page: () => const AddFoodRequestPage(),
     ),
   ];
 }
