@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       getPages: AppPages.pages,
       initialRoute: Routes.MAIN,
       initialBinding: MainBinding(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

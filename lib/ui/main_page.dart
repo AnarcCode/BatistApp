@@ -35,19 +35,14 @@ class MainPage extends GetView<MainController> {
                 borderRadius: BorderRadius.circular(12.0),
                 side: const BorderSide(
                   width: 4,
-                  color: Colors.deepPurple,
+                  color: Colors.purple,
                 ),
               ),
-              margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20, top: 15),
-                child: Center(
-                  child: Text(
-                    String.fromCharCode(65 + index),
-                    style: const TextStyle(
-                      fontSize: 110,
-                      color: Colors.white,
-                    ),
+              child: Center(
+                child: Text(
+                  controller.foodRequests[index].name,
+                  style: const TextStyle(
+                    fontSize: 18,
                   ),
                 ),
               ),
