@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FoodRequestPage extends StatelessWidget {
-  const FoodRequestPage({super.key});
+import 'package:batistapp/controllers/resume_controller.dart';
+
+class ResumePage extends GetView<ResumeController> {
+  const ResumePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Escolher pedido'),
+        title: const Text('Resumo'),
         centerTitle: true,
         backgroundColor: Colors.purple,
         leading: IconButton(

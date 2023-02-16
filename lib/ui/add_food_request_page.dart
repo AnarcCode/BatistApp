@@ -105,7 +105,6 @@ class AddFoodRequestPage extends GetView<AddFoodRequestController> {
                                   controller.foods.contains(foods[i])) {
                                 controller.foods.remove(foods[i]);
                               }
-                              print(controller.foods);
                             },
                           );
                         }),
@@ -140,7 +139,6 @@ class AddFoodRequestPage extends GetView<AddFoodRequestController> {
                                   controller.juices.contains(juices[i])) {
                                 controller.juices.remove(juices[i]);
                               }
-                              print(controller.juices);
                             },
                           );
                         }),

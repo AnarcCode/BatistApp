@@ -22,6 +22,7 @@ class MainController extends GetxController {
     for (var element in query.docs) {
       foodRequests.add(
         FoodRequestModel(
+          id: element.id,
           idCreator: element.get('idCreator'),
           name: element.get('name'),
           foods: List<String>.from(element.get('foods')),
