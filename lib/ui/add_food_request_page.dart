@@ -1,3 +1,4 @@
+import 'package:batistapp/ui/widgets/food_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +9,35 @@ class AddFoodRequestPage extends GetView<AddFoodRequestController> {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> foods = [
+      'Assado de panela',
+      'Almondegas',
+      'Bisteca suina',
+      'Bife com fritas',
+      'Carne de Sol com fritas',
+      'Cozidão com Pirão',
+      'Figado Bovino',
+      'Fricasse',
+      'Frango ao molho',
+      'Linguiça calabresa',
+      'Peixe Frito',
+      'Peixe ao molho',
+      'Peito de frango assado',
+      'Peito de frango a milanesa',
+      'Pernil cozido',
+      'Strogonoff de frango',
+    ];
+
+    final List<String> juices = [
+      'Abacaxi',
+      'Acerola',
+      'Cajá',
+      'Caju',
+      'Goiaba',
+      'Tamarindo',
+      'Maracuja ',
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Criar pedido'),
@@ -59,7 +89,85 @@ class AddFoodRequestPage extends GetView<AddFoodRequestController> {
                 child: Container(
                   margin:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: Column(
+                    children: [
+                      for (int i = 0; i < foods.length; i++)
+                        Obx(() {
+                          return FoodItem(
+                            food: foods[i],
+                            value: controller.foods.contains(foods[i]),
+                            onChanged: (bool? value) {
+                              if (value == true &&
+                                  !controller.foods.contains(foods[i])) {
+                                controller.foods.add(foods[i]);
+                              }
+                              if (value == false &&
+                                  controller.foods.contains(foods[i])) {
+                                controller.foods.remove(foods[i]);
+                              }
+                              print(controller.foods);
+                            },
+                          );
+                        }),
+                    ],
+                  ),
                 ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'Sucos',
+                style: TextStyle(fontSize: 18),
+              ),
+              Card(
+                child: Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: Column(
+                    children: [
+                      for (int i = 0; i < juices.length; i++)
+                        Obx(() {
+                          return FoodItem(
+                            food: juices[i],
+                            value: controller.juices.contains(juices[i]),
+                            onChanged: (bool? value) {
+                              if (value == true &&
+                                  !controller.juices.contains(juices[i])) {
+                                controller.juices.add(juices[i]);
+                              }
+                              if (value == false &&
+                                  controller.juices.contains(juices[i])) {
+                                controller.juices.remove(juices[i]);
+                              }
+                              print(controller.juices);
+                            },
+                          );
+                        }),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: Get.height - 20,
+                height: Get.height * 0.075,
+                color: Colors.purple,
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Confirmar pedido',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
               ),
             ],
           ),
