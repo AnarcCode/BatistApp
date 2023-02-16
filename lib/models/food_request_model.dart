@@ -5,6 +5,7 @@ class FoodRequestModel implements Model {
   final String idCreator;
   final String name;
   final List<String> foods;
+  final List<String> juices;
   final List<UserRequestModel>? userRequest;
 
 
@@ -12,6 +13,7 @@ class FoodRequestModel implements Model {
     required this.idCreator,
     required this.name,
     required this.foods,
+    required this.juices,
     this.userRequest,
   });
 
@@ -21,12 +23,13 @@ class FoodRequestModel implements Model {
       'idCreator' : idCreator,
       'name': name,
       'foods': foods,
+      'juices': juices,
       'userRequest': userRequest,
     };
   }
 
   @override
   String toString() {
-    return 'FoodRequestModel{idCreator: $idCreator, name: $name, foods: $foods, userRequest: $userRequest}';
+    return 'FoodRequestModel{idCreator: $idCreator, name: $name, foods: $foods, juices: $juices, userRequest: $userRequest}';
   }
 }

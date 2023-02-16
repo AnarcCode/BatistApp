@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
+import 'package:batistapp/models/food_request_model.dart';
+
 class MainController extends GetxController {
   FirebaseFirestore db = FirebaseFirestore.instance;
+
+  final foodRequests = <FoodRequestModel>[].obs;
 
   @override
   Future<void> onInit() async {
