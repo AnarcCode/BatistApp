@@ -20,39 +20,41 @@ class MainPage extends GetView<MainController> {
           )
         ],
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(18),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 18,
-          mainAxisSpacing: 20,
-        ),
-        itemCount: 26,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0),
-              side: const BorderSide(
-                width: 4,
-                color: Colors.deepPurple,
+      body: Obx(() {
+        return GridView.builder(
+          padding: const EdgeInsets.all(18),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 18,
+            mainAxisSpacing: 20,
+          ),
+          itemCount: controller.foodRequests.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+                side: const BorderSide(
+                  width: 4,
+                  color: Colors.deepPurple,
+                ),
               ),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20, top: 15),
-              child: Center(
-                child: Text(
-                  String.fromCharCode(65 + index),
-                  style: const TextStyle(
-                    fontSize: 110,
-                    color: Colors.white,
+              margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20, top: 15),
+                child: Center(
+                  child: Text(
+                    String.fromCharCode(65 + index),
+                    style: const TextStyle(
+                      fontSize: 110,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
-            ),
-          );
-        },
-      ),
+            );
+          },
+        );
+      }),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.toNamed(Routes.FOOD_REQUEST),
         backgroundColor: Colors.purple,

@@ -59,12 +59,6 @@ class AddFoodRequestPage extends GetView<AddFoodRequestController> {
                 child: Container(
                   margin:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child: ListView.builder(
-                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                    return Text('scac');
-                  })
                 ),
               ),
             ],
