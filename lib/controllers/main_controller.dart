@@ -6,6 +6,7 @@ class MainController extends GetxController {
 
   @override
   Future<void> onInit() async {
+    getFoodRequests();
     super.onInit();
   }
 
