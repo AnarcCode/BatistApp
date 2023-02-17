@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +24,10 @@ class FoodRequestController extends GetxController {
 
   final description = TextEditingController();
 
+  final _idDevice = ''.obs;
+  String get idDevice => _idDevice.value;
+  set idDevice(String value) => _idDevice.value = value;
+
   final _foods = <String>[].obs;
   List<String> get foods => _foods;
   set foods(List<String> value) => _foods.value = value;
@@ -29,4 +36,45 @@ class FoodRequestController extends GetxController {
   List<String> get juices => _juices;
   set juices(List<String> value) => _juices.value = value;
 
+  Future<void> foodRequest() async {
+    if (name.text.isNotEmpty && (foods.isNotEmpty || juices.isNotEmpty)) {
+      final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+
+      if (Platform.isAndroid) {
+        var build = await deviceInfoPlugin.androidInfo;
+        idDevice = build.id;
+      } else if (Platform.isIOS) {
+        var data = await deviceInfoPlugin.iosInfo;
+        idDevice = data.identifierForVendor!;
+      }
+
+      final data = <String, dynamic>{
+        'idCreator': idDevice,
+        'name': name.text,
+        'foods': foods,
+        'juices': juices,
+        'description': description.text,
+      };
+
+      db
+          .collection('food requests')
+          .doc(currentRequest.id)
+          .collection('requests')
+          .add(data)
+          .then((value) {
+        Get.back();
+        Get.snackbar(
+          'Sucesso',
+          'Um novo pedido foi criado !',
+          backgroundColor: Colors.white,
+        );
+      });
+    } else {
+      Get.snackbar(
+        'Erro',
+        'Verifique as informações do pedido !',
+        backgroundColor: Colors.white,
+      );
+    }
+  }
 }

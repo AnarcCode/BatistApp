@@ -1,5 +1,4 @@
 import 'package:batistapp/ui/widgets/choose_item.dart';
-import 'package:batistapp/ui/widgets/food_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -154,7 +153,7 @@ class FoodRequestPage extends GetView<FoodRequestController> {
                   margin:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: TextFormField(
-                    controller: controller.name,
+                    controller: controller.description,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
@@ -180,8 +179,8 @@ class FoodRequestPage extends GetView<FoodRequestController> {
                 width: Get.height - 20,
                 height: Get.height * 0.075,
                 color: Colors.purple,
-                child: const TextButton(
-                  onPressed: null,
+                child: TextButton(
+                  onPressed: controller.foodRequest,
                   child: const Text(
                     'Confirmar pedido',
                     style: TextStyle(
