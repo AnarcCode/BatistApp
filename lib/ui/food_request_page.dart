@@ -1,3 +1,4 @@
+import 'package:batistapp/ui/widgets/choose_item.dart';
 import 'package:batistapp/ui/widgets/food_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -65,27 +66,34 @@ class FoodRequestPage extends GetView<FoodRequestController> {
                       for (int i = 0;
                           i < controller.currentRequest.foods.length;
                           i++)
-                        Obx(() {
-                          return FoodItem(
-                            food: controller.currentRequest.foods[i],
-                            value: controller.currentRequest.foods
-                                .contains(controller.currentRequest.foods[i]),
-                            onChanged: (bool? value) {
-                              if (value == true &&
-                                  !controller.currentRequest.foods.contains(
-                                      controller.currentRequest.foods[i])) {
-                                controller.currentRequest.foods
+                        Obx(
+                          () {
+                            int count = 0;
+
+                            for (var element in controller.foods) {
+                              if (element ==
+                                  controller.currentRequest.foods[i]) {
+                                count++;
+                              }
+                            }
+
+                            return ChooseItem(
+                              food: controller.currentRequest.foods[i],
+                              value: count.toString(),
+                              onChangedLess: () {
+                                if (controller.foods.contains(
+                                    controller.currentRequest.foods[i])) {
+                                  controller.foods.remove(
+                                      controller.currentRequest.foods[i]);
+                                }
+                              },
+                              onChangedPlus: () {
+                                controller.foods
                                     .add(controller.currentRequest.foods[i]);
-                              }
-                              if (value == false &&
-                                  controller.currentRequest.foods.contains(
-                                      controller.currentRequest.foods[i])) {
-                                controller.currentRequest.foods
-                                    .remove(controller.currentRequest.foods[i]);
-                              }
-                            },
-                          );
-                        }),
+                              },
+                            );
+                          },
+                        ),
                     ],
                   ),
                 ),
@@ -106,28 +114,62 @@ class FoodRequestPage extends GetView<FoodRequestController> {
                       for (int i = 0;
                           i < controller.currentRequest.juices.length;
                           i++)
-                        Obx(() {
-                          return FoodItem(
-                            food: controller.currentRequest.juices[i],
-                            value: controller.currentRequest.juices
-                                .contains(controller.currentRequest.juices[i]),
-                            onChanged: (bool? value) {
-                              if (value == true &&
-                                  !controller.currentRequest.juices.contains(
-                                      controller.currentRequest.juices[i])) {
-                                controller.currentRequest.juices
+                        Obx(
+                          () {
+                            int count = 0;
+
+                            for (var element in controller.juices) {
+                              if (element ==
+                                  controller.currentRequest.juices[i]) {
+                                count++;
+                              }
+                            }
+
+                            return ChooseItem(
+                              food: controller.currentRequest.juices[i],
+                              value: count.toString(),
+                              onChangedLess: () {
+                                if (controller.juices.contains(
+                                    controller.currentRequest.juices[i])) {
+                                  controller.juices.remove(
+                                      controller.currentRequest.juices[i]);
+                                }
+                              },
+                              onChangedPlus: () {
+                                controller.juices
                                     .add(controller.currentRequest.juices[i]);
-                              }
-                              if (value == false &&
-                                  controller.currentRequest.juices.contains(
-                                      controller.currentRequest.juices[i])) {
-                                controller.currentRequest.juices.remove(
-                                    controller.currentRequest.juices[i]);
-                              }
-                            },
-                          );
-                        }),
+                              },
+                            );
+                          },
+                        ),
                     ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Card(
+                child: Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: TextFormField(
+                    controller: controller.name,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(4),
+                        ),
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 18,
+                      ),
+                      label: Text('Descrição'),
+                    ),
                   ),
                 ),
               ),

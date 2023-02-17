@@ -4,7 +4,8 @@ class UserRequestModel implements Model {
   final String id;
   final String idCreator;
   final String user;
-  final List<String> food;
+  final String description;
+  final List<String>? food;
   final List<String>? juice;
   final bool? pay;
 
@@ -12,7 +13,8 @@ class UserRequestModel implements Model {
     required this.id,
     required this.idCreator,
     required this.user,
-    required this.food,
+    required this.description,
+    this.food,
     this.juice,
     this.pay,
   });
@@ -31,6 +33,6 @@ class UserRequestModel implements Model {
 
   @override
   String toString() {
-    return 'UserRequestModel{id: $id, idCreator: $idCreator, user: $user, food: $food, juice: $juice, pay: $pay}';
+    return 'UserRequestModel{id: $id, idCreator: $idCreator, user: $user, description: $description, food: $food, juice: $juice, pay: $pay}';
   }
 }
