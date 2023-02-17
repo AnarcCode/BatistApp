@@ -4,7 +4,7 @@ class UserRequestModel implements Model {
   final String id;
   final String idCreator;
   final String user;
-  final String description;
+  final String? description;
   final List<String>? food;
   final List<String>? juice;
   final bool? pay;
@@ -13,7 +13,7 @@ class UserRequestModel implements Model {
     required this.id,
     required this.idCreator,
     required this.user,
-    required this.description,
+    this.description,
     this.food,
     this.juice,
     this.pay,

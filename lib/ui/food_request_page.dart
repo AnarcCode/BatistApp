@@ -181,9 +181,9 @@ class FoodRequestPage extends GetView<FoodRequestController> {
                 color: Colors.purple,
                 child: TextButton(
                   onPressed: controller.foodRequest,
-                  child: const Text(
-                    'Confirmar pedido',
-                    style: TextStyle(
+                  child: Text(
+                    controller.isEdit ? 'Atualizar pedido' : 'Confirmar pedido',
+                    style: const TextStyle(
                       fontSize: 18,
                       color: Colors.white,
                     ),

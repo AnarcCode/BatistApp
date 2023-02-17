@@ -11,18 +11,42 @@ class FoodRequestController extends GetxController {
   FirebaseFirestore db = FirebaseFirestore.instance;
 
   @override
-  void onInit() {
+  void onInit() async {
     currentRequest = Get.arguments;
+    if (currentRequest.userRequest!.isNotEmpty) {
+      for (var element in currentRequest.userRequest!) {
+        final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+
+        if (Platform.isAndroid) {
+          var build = await deviceInfoPlugin.androidInfo;
+          idDevice = build.id;
+        } else if (Platform.isIOS) {
+          var data = await deviceInfoPlugin.iosInfo;
+          idDevice = data.identifierForVendor!;
+        }
+        if (element.idCreator == idDevice) {
+          isEdit = true;
+          name.text = element.user;
+          description.text = element.description!;
+          foods = element.food!;
+          juices = element.juice!;
+        }
+      }
+    }
+
     super.onInit();
   }
+
+  final name = TextEditingController();
+  final description = TextEditingController();
+
+  final _isEdit = false.obs;
+  bool get isEdit => _isEdit.value;
+  set isEdit(bool value) => _isEdit.value = value;
 
   final _currentRequest = FoodRequestModel.fromMap({}).obs;
   FoodRequestModel get currentRequest => _currentRequest.value;
   set currentRequest(FoodRequestModel value) => _currentRequest.value = value;
-
-  final name = TextEditingController();
-
-  final description = TextEditingController();
 
   final _idDevice = ''.obs;
   String get idDevice => _idDevice.value;
@@ -54,6 +78,7 @@ class FoodRequestController extends GetxController {
         'foods': foods,
         'juices': juices,
         'description': description.text,
+        'pay': false,
       };
 
       db
