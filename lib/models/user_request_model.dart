@@ -1,28 +1,36 @@
 import 'package:batistapp/models/model.dart';
 
 class UserRequestModel implements Model {
+  final String id;
+  final String idCreator;
   final String user;
-  final String food;
+  final List<String> food;
+  final List<String>? juice;
   final bool? pay;
 
-
   UserRequestModel({
+    required this.id,
+    required this.idCreator,
     required this.user,
     required this.food,
+    this.juice,
     this.pay,
   });
 
   @override
   Map<String, dynamic> toMap() {
     return {
-      'user' : user,
+      'id': id,
+      'idCreator': idCreator,
+      'user': user,
       'food': food,
+      'juice': juice,
       'pay': pay,
     };
   }
 
   @override
   String toString() {
-    return 'UserRequestModel{user: $user, food: $food, pay: $pay}';
+    return 'UserRequestModel{id: $id, idCreator: $idCreator, user: $user, food: $food, juice: $juice, pay: $pay}';
   }
 }
