@@ -18,6 +18,17 @@ class FoodRequestModel implements Model {
     this.userRequest,
   });
 
+  FoodRequestModel.fromMap(Map<String, dynamic> map)
+      : id = map['id'] is String ? map['id'] as String : '',
+        idCreator =
+            map['idCreator'] is String ? map['idCreator'] as String : '',
+        name = map['name'] is String ? map['name'] as String : '',
+        foods = map['foods'] is List<String> ? map['foods'] : [],
+        juices = map['juices'] is List<String> ? map['juices'] : [],
+        userRequest = map['userRequest'] is List<UserRequestModel>
+            ? map['userRequest']
+            : [];
+
   @override
   Map<String, dynamic> toMap() {
     return {
