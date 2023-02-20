@@ -52,6 +52,10 @@ class MainPage extends GetView<MainController> {
                 Routes.FOOD_REQUEST,
                 arguments: controller.foodRequests[index],
               ),
+              onLongPress: () => Get.toNamed(
+                Routes.RESUME,
+                arguments: controller.foodRequests[index],
+              ),
             );
           },
         );

@@ -18,6 +18,45 @@ class ResumePage extends GetView<ResumeController> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        child: SingleChildScrollView(
+          physics: const ScrollPhysics(),
+          child: Column(
+            children: [
+              const Text(
+                'Peidos',
+                style: TextStyle(fontSize: 18),
+              ),
+              Card(
+                child: Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: Column(
+                    children: [],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'Resumo',
+                style: TextStyle(fontSize: 18),
+              ),
+              Card(
+                child: Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
