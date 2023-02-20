@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:batistapp/controllers/resume_controller.dart';
+import 'package:batistapp/ui/widgets/resume_item.dart';
 
 class ResumePage extends GetView<ResumeController> {
   const ResumePage({super.key});
@@ -25,18 +26,21 @@ class ResumePage extends GetView<ResumeController> {
           child: Column(
             children: [
               const Text(
-                'Peidos',
+                'Pedidos',
                 style: TextStyle(fontSize: 18),
               ),
-              Card(
-                child: Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child: Column(
-                    children: [],
+              for (int i = 0;
+                  i < controller.currentRequest.userRequest!.length;
+                  i++)
+                Card(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 20),
+                    child: ResumeItem(
+                      userRequest: controller.currentRequest.userRequest![i],
+                    ),
                   ),
                 ),
-              ),
               const SizedBox(
                 height: 10,
               ),
