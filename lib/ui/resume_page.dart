@@ -50,8 +50,25 @@ class ResumePage extends GetView<ResumeController> {
               ),
               Card(
                 child: Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 20,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          for (var element in controller.resumeFood)
+                            Text(
+                                '${element.name}: ${element.amount} ${element.amount > 1 ? 'unidades' : 'unidade'}'),
+                          for (var element in controller.resumeJuice)
+                            Text(
+                                'Suco de ${element.name}: ${element.amount} ${element.amount > 1 ? 'unidades' : 'unidade'}'),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
