@@ -26,6 +26,7 @@ class FoodRequestController extends GetxController {
         }
         if (element.idCreator == idDevice) {
           isEdit = true;
+          idEdit = element.id;
           name.text = element.user;
           description.text = element.description!;
           foods = element.food!;
@@ -47,6 +48,10 @@ class FoodRequestController extends GetxController {
   final _currentRequest = FoodRequestModel.fromMap({}).obs;
   FoodRequestModel get currentRequest => _currentRequest.value;
   set currentRequest(FoodRequestModel value) => _currentRequest.value = value;
+
+  final _idEdit = ''.obs;
+  String get idEdit => _idEdit.value;
+  set idEdit(String value) => _idEdit.value = value;
 
   final _idDevice = ''.obs;
   String get idDevice => _idDevice.value;
@@ -81,19 +86,36 @@ class FoodRequestController extends GetxController {
         'pay': false,
       };
 
-      db
-          .collection('food requests')
-          .doc(currentRequest.id)
-          .collection('requests')
-          .add(data)
-          .then((value) {
-        Get.back();
-        Get.snackbar(
-          'Sucesso',
-          'Um novo pedido foi criado !',
-          backgroundColor: Colors.white,
-        );
-      });
+      if (isEdit) {
+        db
+            .collection('food requests')
+            .doc(currentRequest.id)
+            .collection('requests')
+            .doc(idEdit)
+            .set(data)
+            .then((value) {
+          Get.back();
+          Get.snackbar(
+            'Sucesso',
+            'Um novo pedido foi criado !',
+            backgroundColor: Colors.white,
+          );
+        });
+      } else {
+        db
+            .collection('food requests')
+            .doc(currentRequest.id)
+            .collection('requests')
+            .add(data)
+            .then((value) {
+          Get.back();
+          Get.snackbar(
+            'Sucesso',
+            'Um novo pedido foi criado !',
+            backgroundColor: Colors.white,
+          );
+        });
+      }
     } else {
       Get.snackbar(
         'Erro',
