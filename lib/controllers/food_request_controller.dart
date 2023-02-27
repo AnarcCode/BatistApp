@@ -124,4 +124,23 @@ class FoodRequestController extends GetxController {
       );
     }
   }
+
+  Future<void> cancelFoodRequest() async {
+    db
+        .collection('food requests')
+        .doc(currentRequest.id)
+        .collection('requests')
+        .doc(idEdit)
+        .delete()
+        .then(
+      (value) {
+        Get.back();
+        Get.snackbar(
+          'Sucesso',
+          'Seu pedido foi excluído !',
+          backgroundColor: Colors.white,
+        );
+      },
+    );
+  }
 }
