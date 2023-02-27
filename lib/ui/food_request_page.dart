@@ -197,6 +197,28 @@ class FoodRequestPage extends GetView<FoodRequestController> {
               const SizedBox(
                 height: 10,
               ),
+              Obx(
+                () => controller.isEdit
+                    ? Container(
+                        width: Get.height - 20,
+                        height: Get.height * 0.075,
+                        color: Colors.purple,
+                        child: TextButton(
+                          onPressed: controller.cancelFoodRequest,
+                          child: const Text(
+                            'Remover pedido',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
             ],
           ),
         ),
